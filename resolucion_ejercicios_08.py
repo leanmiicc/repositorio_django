@@ -43,13 +43,10 @@ class Cuenta_Joven(Cuenta):
             print("Ingrese un monto válido.")
 
     def mostrar(self):
-        try:
             if self.age > 17 and self.age < 26:
                 print(f"Es una cuenta joven y la bonificacion es: {self.bonificacion}%")
             else:
                 print(f"El nombre de la persona es: {self.name}, edad: {self.age} años y dni: {self.dni}. Su saldo en la cuenta es: {self.cantidad}")
-        except TypeError:
-            print("Ingrese un monto válido.")
 
 
 if __name__ == "__main__":

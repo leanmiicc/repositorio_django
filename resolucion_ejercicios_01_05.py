@@ -98,7 +98,7 @@ def get_int():
         numero_entero = int(input("Ingrese un numero entero para la forma iterativa: "))
         while type(numero_entero) == int:
             print(f"El numero ingresado es: {numero_entero}")
-            numero_entero = int(input("Ingrese un numero entero: "))
+            numero_entero = int(input("Ingrese un numero entero para la forma iterativa: "))
     except ValueError:
         print("No se ingreso un número.")
 

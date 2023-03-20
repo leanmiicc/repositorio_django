@@ -19,39 +19,47 @@ class Cuenta_Joven(Cuenta):
         self.__bonificacion = bonificacion
 
     @property
-    def get_bonificacion(self):
+    def bonificacion(self):
         return self.__bonificacion
 
-    @get_bonificacion.setter
-    def set_bonificacion(self, bonificacion):
+    @bonificacion.setter
+    def bonificacion(self, bonificacion):
         self.__bonificacion = bonificacion
 
     def es_titulatar_valido(self):
-        if self.get_age > 17 and self.get_age < 26:
+        if self.age > 17 and self.age < 26:
             return True
         return False
 
     def retirar(self, cantidad):
-        if self.es_titulatar_valido() == True:
-            saldo = self.get_cantidad - cantidad
-            print(f"Se retira {cantidad} a la cuenta")
-            print(f"Su nuevo saldo es: {saldo}")
-        else:
-            print("El titular no es válido")
+        try:
+            if self.es_titulatar_valido() == True:
+                saldo = self.cantidad - cantidad
+                self.cantidad = saldo
+                print(f"Se retira {cantidad} de la cuenta, su nuevo saldo es: {round(saldo,2)}")
+            else:
+                print("El titular no es válido")
+        except TypeError:
+            print("Ingrese un monto válido.")
 
     def mostrar(self):
-        if self.get_age > 17 and self.get_age < 26:
-            print(f"Es una cuenta joven y la bonificacion es: {self.get_bonificacion}%")
-        else:
-            print(f"El nombre de la persona es: {self.get_name}, edad: {self.get_age} años y dni: {self.get_dni}. Su saldo en la cuenta es: {self.get_cantidad}")
+        try:
+            if self.age > 17 and self.age < 26:
+                print(f"Es una cuenta joven y la bonificacion es: {self.bonificacion}%")
+            else:
+                print(f"El nombre de la persona es: {self.name}, edad: {self.age} años y dni: {self.dni}. Su saldo en la cuenta es: {self.cantidad}")
+        except TypeError:
+            print("Ingrese un monto válido.")
 
 
 if __name__ == "__main__":
     cuenta_joven_1 = Cuenta_Joven("Juan", 20, 123456789, 500.20, 20.6)
     cuenta_joven_1.mostrar()
     cuenta_joven_1.retirar(200)
+    cuenta_joven_1.retirar(35.35)
+    cuenta_joven_1.retirar("hola")
     print(cuenta_joven_1.es_titulatar_valido())
-    
+
     cuenta_adulta_1 = Cuenta_Joven("Juan", 34, 123456789, 500.20, 20.6)
     cuenta_adulta_1.mostrar()
     cuenta_adulta_1.retirar(200)

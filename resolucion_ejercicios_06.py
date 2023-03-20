@@ -11,34 +11,34 @@ class Persona():
         self.__dni = dni
 
     @property
-    def get_name(self):
+    def name(self):
         return self.__nombre
 
-    @get_name.setter
-    def set_name(self, nuevo_nombre):
+    @name.setter
+    def name(self, nuevo_nombre):
         self.__nombre = nuevo_nombre
 
     @property
-    def get_age(self):
+    def age(self):
         return self.__edad
 
-    @get_age.setter
-    def set_age(self, edad_nueva):
+    @age.setter
+    def age(self, edad_nueva):
         self.__nombre = edad_nueva
 
     @property
-    def get_dni(self):
+    def dni(self):
         return self.__dni
 
-    @get_dni.setter
-    def set_dni(self, dni_nuevo):
+    @dni.setter
+    def dni(self, dni_nuevo):
         self.__nombre = dni_nuevo
 
     def mostrar(self):
-        return f"El nombre de la persona es: {self.get_name}, edad: {self.get_age} años y dni: {self.get_dni}"
+        return f"El nombre de la persona es: {self.name}, edad: {self.age} años y dni: {self.dni}"
 
     def es_mayor_de_edad(self):
-        if self.__edad >= 18:
+        if self.age >= 18:
             return True
         return False
 
